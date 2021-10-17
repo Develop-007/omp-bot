@@ -41,6 +41,8 @@ func (c *CinemaSeatCommander) HandleCommand(msg *tgbotapi.Message, commandPath p
 		c.List(msg)
 	case "get":
 		c.Get(msg)
+	case "delete":
+		c.Delete(msg)
 	default:
 		c.Default(msg)
 	}
