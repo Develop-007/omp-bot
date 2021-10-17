@@ -16,7 +16,7 @@ func (c *CinemaSeatCommander) Get(inputMessage *tgbotapi.Message) {
 		return
 	}
 
-	product, err := c.seatService.Get(idx)
+	product, err := c.seatService.Describe(uint64(idx))
 	if err != nil {
 		log.Printf("fail to get product with idx %d: %v", idx, err)
 		return

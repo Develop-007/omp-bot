@@ -10,7 +10,7 @@ import (
 func (c *CinemaSeatCommander) List(inputMessage *tgbotapi.Message) {
 	outputMsgText := "Here all the products: \n\n"
 
-	products := c.seatService.List()
+	products := c.seatService.List(0, 0)
 	for _, p := range products {
 		outputMsgText += p.Title
 		outputMsgText += "\n"

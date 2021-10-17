@@ -8,7 +8,7 @@ import (
 func (c *CinemaSeatCommander) New(inputMessage *tgbotapi.Message) {
 	args := inputMessage.CommandArguments()
 
-	c.seatService.Add(seat.Seat{Title: args})
+	c.seatService.Create(seat.Seat{Title: args})
 	msg := tgbotapi.NewMessage(
 		inputMessage.Chat.ID,
 		"Success add seat",
