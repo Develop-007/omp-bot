@@ -7,7 +7,7 @@ import (
 	"github.com/ozonmp/omp-bot/internal/app/path"
 )
 
-func (c *DemoSubdomainCommander) List(inputMessage *tgbotapi.Message) {
+func (c *CinemaSubdomainCommander) List(inputMessage *tgbotapi.Message) {
 	outputMsgText := "Here all the products: \n\n"
 
 	products := c.subdomainService.List()
@@ -23,7 +23,7 @@ func (c *DemoSubdomainCommander) List(inputMessage *tgbotapi.Message) {
 	})
 
 	callbackPath := path.CallbackPath{
-		Domain:       "demo",
+		Domain:       "cinema",
 		Subdomain:    "subdomain",
 		CallbackName: "list",
 		CallbackData: string(serializedData),

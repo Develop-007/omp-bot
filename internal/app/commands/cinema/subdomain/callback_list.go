@@ -12,7 +12,7 @@ type CallbackListData struct {
 	Offset int `json:"offset"`
 }
 
-func (c *DemoSubdomainCommander) CallbackList(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
+func (c *CinemaSubdomainCommander) CallbackList(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
 	parsedData := CallbackListData{}
 	json.Unmarshal([]byte(callbackPath.CallbackData), &parsedData)
 	msg := tgbotapi.NewMessage(

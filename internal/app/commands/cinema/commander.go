@@ -1,10 +1,10 @@
-package demo
+package cinema
 
 import (
 	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"github.com/ozonmp/omp-bot/internal/app/commands/demo/subdomain"
+	"github.com/ozonmp/omp-bot/internal/app/commands/cinema/subdomain"
 	"github.com/ozonmp/omp-bot/internal/app/path"
 )
 
@@ -13,35 +13,35 @@ type Commander interface {
 	HandleCommand(message *tgbotapi.Message, commandPath path.CommandPath)
 }
 
-type DemoCommander struct {
+type CinemaCommander struct {
 	bot                *tgbotapi.BotAPI
 	subdomainCommander Commander
 }
 
-func NewDemoCommander(
+func NewCinemaCommander(
 	bot *tgbotapi.BotAPI,
-) *DemoCommander {
-	return &DemoCommander{
+) *CinemaCommander {
+	return &CinemaCommander{
 		bot: bot,
 		// subdomainCommander
-		subdomainCommander: subdomain.NewDemoSubdomainCommander(bot),
+		subdomainCommander: subdomain.NewCinemaSubdomainCommander(bot),
 	}
 }
 
-func (c *DemoCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
+func (c *CinemaCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
 	switch callbackPath.Subdomain {
 	case "subdomain":
 		c.subdomainCommander.HandleCallback(callback, callbackPath)
 	default:
-		log.Printf("DemoCommander.HandleCallback: unknown subdomain - %s", callbackPath.Subdomain)
+		log.Printf("CinemaCommander.HandleCallback: unknown subdomain - %s", callbackPath.Subdomain)
 	}
 }
 
-func (c *DemoCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.CommandPath) {
+func (c *CinemaCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.CommandPath) {
 	switch commandPath.Subdomain {
 	case "subdomain":
 		c.subdomainCommander.HandleCommand(msg, commandPath)
 	default:
-		log.Printf("DemoCommander.HandleCommand: unknown subdomain - %s", commandPath.Subdomain)
+		log.Printf("CinemaCommander.HandleCommand: unknown subdomain - %s", commandPath.Subdomain)
 	}
 }

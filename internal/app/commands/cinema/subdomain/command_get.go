@@ -7,7 +7,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-func (c *DemoSubdomainCommander) Get(inputMessage *tgbotapi.Message) {
+func (c *CinemaSubdomainCommander) Get(inputMessage *tgbotapi.Message) {
 	args := inputMessage.CommandArguments()
 
 	idx, err := strconv.Atoi(args)

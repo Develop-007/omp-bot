@@ -5,35 +5,35 @@ import (
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/ozonmp/omp-bot/internal/app/path"
-	"github.com/ozonmp/omp-bot/internal/service/demo/subdomain"
+	"github.com/ozonmp/omp-bot/internal/service/cinema/subdomain"
 )
 
-type DemoSubdomainCommander struct {
+type CinemaSubdomainCommander struct {
 	bot              *tgbotapi.BotAPI
 	subdomainService *subdomain.Service
 }
 
-func NewDemoSubdomainCommander(
+func NewCinemaSubdomainCommander(
 	bot *tgbotapi.BotAPI,
-) *DemoSubdomainCommander {
+) *CinemaSubdomainCommander {
 	subdomainService := subdomain.NewService()
 
-	return &DemoSubdomainCommander{
+	return &CinemaSubdomainCommander{
 		bot:              bot,
 		subdomainService: subdomainService,
 	}
 }
 
-func (c *DemoSubdomainCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
+func (c *CinemaSubdomainCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
 	switch callbackPath.CallbackName {
 	case "list":
 		c.CallbackList(callback, callbackPath)
 	default:
-		log.Printf("DemoSubdomainCommander.HandleCallback: unknown callback name: %s", callbackPath.CallbackName)
+		log.Printf("CinemaSubdomainCommander.HandleCallback: unknown callback name: %s", callbackPath.CallbackName)
 	}
 }
 
-func (c *DemoSubdomainCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.CommandPath) {
+func (c *CinemaSubdomainCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.CommandPath) {
 	switch commandPath.CommandName {
 	case "help":
 		c.Help(msg)
