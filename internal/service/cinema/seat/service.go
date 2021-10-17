@@ -10,7 +10,7 @@ type SeatService interface {
 
 type DummySeatService struct{}
 
-func NewService() *DummySeatService {
+func NewService() SeatService {
 	return &DummySeatService{}
 }
 
@@ -27,11 +27,11 @@ func (s *DummySeatService) Create(seat Seat) (uint64, error) {
 	return uint64(len(allEntities) - 1), nil
 }
 
-func (s *DummySeatService) Update(seat Seat) error {
+func (s *DummySeatService) Update(seat_id uint64, seat Seat) error {
 	return nil
 }
 
-func (s *DummySeatService) Remove(idx int) (bool, error) {
-	allEntities = append(allEntities[:idx], allEntities[idx+1:]...)
+func (s *DummySeatService) Remove(seat_id uint64) (bool, error) {
+	allEntities = append(allEntities[:seat_id], allEntities[seat_id+1:]...)
 	return true, nil
 }

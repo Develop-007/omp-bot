@@ -10,7 +10,7 @@ import (
 
 type CinemaSeatCommander struct {
 	bot         *tgbotapi.BotAPI
-	seatService *seat.DummySeatService
+	seatService seat.SeatService
 }
 
 func NewCinemaSeatCommander(

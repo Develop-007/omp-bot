@@ -16,7 +16,7 @@ func (c *CinemaSeatCommander) Delete(inputMessage *tgbotapi.Message) {
 		return
 	}
 
-	c.seatService.Remove(idx)
+	c.seatService.Remove(uint64(idx))
 
 	msg := tgbotapi.NewMessage(
 		inputMessage.Chat.ID,
