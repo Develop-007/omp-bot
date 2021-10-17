@@ -1,4 +1,4 @@
-package subdomain
+package seat
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-func (c *CinemaSubdomainCommander) Get(inputMessage *tgbotapi.Message) {
+func (c *CinemaSeatCommander) Get(inputMessage *tgbotapi.Message) {
 	args := inputMessage.CommandArguments()
 
 	idx, err := strconv.Atoi(args)
@@ -16,7 +16,7 @@ func (c *CinemaSubdomainCommander) Get(inputMessage *tgbotapi.Message) {
 		return
 	}
 
-	product, err := c.subdomainService.Get(idx)
+	product, err := c.seatService.Get(idx)
 	if err != nil {
 		log.Printf("fail to get product with idx %d: %v", idx, err)
 		return

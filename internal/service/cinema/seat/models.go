@@ -1,6 +1,6 @@
-package subdomain
+package seat
 
-var allEntities = []Subdomain{
+var allEntities = []Seat{
 	{Title: "one"},
 	{Title: "two"},
 	{Title: "three"},
@@ -8,6 +8,6 @@ var allEntities = []Subdomain{
 	{Title: "five"},
 }
 
-type Subdomain struct {
+type Seat struct {
 	Title string
 }

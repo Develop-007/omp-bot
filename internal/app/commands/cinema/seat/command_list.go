@@ -1,4 +1,4 @@
-package subdomain
+package seat
 
 import (
 	"encoding/json"
@@ -7,10 +7,10 @@ import (
 	"github.com/ozonmp/omp-bot/internal/app/path"
 )
 
-func (c *CinemaSubdomainCommander) List(inputMessage *tgbotapi.Message) {
+func (c *CinemaSeatCommander) List(inputMessage *tgbotapi.Message) {
 	outputMsgText := "Here all the products: \n\n"
 
-	products := c.subdomainService.List()
+	products := c.seatService.List()
 	for _, p := range products {
 		outputMsgText += p.Title
 		outputMsgText += "\n"
@@ -24,7 +24,7 @@ func (c *CinemaSubdomainCommander) List(inputMessage *tgbotapi.Message) {
 
 	callbackPath := path.CallbackPath{
 		Domain:       "cinema",
-		Subdomain:    "subdomain",
+		Seat:         "seat",
 		CallbackName: "list",
 		CallbackData: string(serializedData),
 	}

@@ -7,7 +7,7 @@ import (
 
 type CallbackPath struct {
 	Domain       string
-	Subdomain    string
+	Seat         string
 	CallbackName string
 	CallbackData string
 }
@@ -20,12 +20,12 @@ func ParseCallback(callbackData string) (CallbackPath, error) {
 
 	return CallbackPath{
 		Domain:       callbackParts[0],
-		Subdomain:    callbackParts[1],
+		Seat:         callbackParts[1],
 		CallbackName: callbackParts[2],
 		CallbackData: callbackParts[3],
 	}, nil
 }
 
 func (p CallbackPath) String() string {
-	return fmt.Sprintf("%s__%s__%s__%s", p.Domain, p.Subdomain, p.CallbackName, p.CallbackData)
+	return fmt.Sprintf("%s__%s__%s__%s", p.Domain, p.Seat, p.CallbackName, p.CallbackData)
 }
